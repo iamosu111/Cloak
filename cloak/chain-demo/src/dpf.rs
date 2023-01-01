@@ -8,6 +8,7 @@ use serde::{Serialize, Deserialize};
 pub struct ResultSlice{
     #[serde(rename = "result_slice")]
     pub slice: Vec<Vec<i32>>,
+    pub len: usize,
 }
 
 #[derive(Debug, Default, Clone, Eq, PartialEq, Serialize, Deserialize)]
@@ -306,7 +307,7 @@ pub struct AggregateResult{
 }
 pub fn aggregate(Y:&ResultSlice)->AggregateResult{
     let mut result1=vec!(0;Y.slice[0].len());
-    for i in 0..Y.slice[0].len(){
+    for i in 0..Y.len{
         result1 =xor_vec(&result1,&Y.slice[i]);
     }
     let result=AggregateResult { res: result1 };

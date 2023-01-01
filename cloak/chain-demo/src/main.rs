@@ -3,10 +3,10 @@ use chain_demo::dpf::*;
 
 fn main(){
     let p:usize=4; //发送给p个服务器
-    let lambda = 4; //随机字符串长度为lamba
+    let lambda = 8; //随机字符串长度为lamba
     let N:usize=8; //总数据量N
     let i:usize=7; //查询第i个数据
-    let x=vec![vec![1,0,1,1],vec![1,1,0,0],vec![1,0,1,0],vec![0,0,1,1],vec![0,1,1,1],vec![0,1,1,0],vec![0,1,0,1],vec![0,1,0,0]];
+    let x=vec![vec![1,0,1,1,1,1,1,1],vec![1,1,0,0,1,1,1,1],vec![1,0,1,0,1,1,1,1],vec![0,0,1,1,1,1,1,1],vec![0,1,1,1,1,1,1,1],vec![0,1,1,0,1,1,1,1],vec![0,1,0,1,1,1,1,1],vec![0,1,0,0,1,1,1,1]];
     println!("查询索引i:{:?}\n",i);
     println!("数据:{:?}\n",x);
     let D=DecomposeParam{
@@ -24,6 +24,7 @@ fn main(){
     }
     let Res=ResultSlice{
         slice:Y,
+        len:p,
     };
     let mut result=aggregate(&Res);
     println!("result:{:?}\n",result);
